@@ -1,2 +1,2 @@
 # Cpp
-My Cpp Codes
+This repo is for all my practice programs on pointers
