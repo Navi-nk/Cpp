@@ -6,8 +6,8 @@ using namespace std;
 
 //Linked List
 struct list{
-int listVal;
-list* nextNode;
+	int listVal;
+	list* nextNode;
 };
 
 //Populate LinkedList with integers falling between start and end arguments with gap between integers being the internal argument
@@ -26,7 +26,7 @@ list* populate(const int start,const int end,const int interval)
 	{
 	    traverse->listVal = i; //populate current node value
 	    
-		if((i+interval)>end) //Exit condition: if current node is at last postion, then its next node should point to null 
+		if((i+interval)>end) //Exit condition: if current node is at last postion, then its next node should point to NULL 
 		{
 			traverse->nextNode=NULL;
 		}
@@ -38,6 +38,27 @@ list* populate(const int start,const int end,const int interval)
 	}
 
     return head;
+}
+
+list* reverse(list** head)
+{
+	if(head == NULL || *head == NULL)
+		return NULL; //foolproofing
+
+	list* curr = *head; 
+	list* prev = NULL;
+	list* next = NULL;
+
+	
+	while(curr !=NULL)
+	{
+		next = curr->nextNode;
+	    curr->nextNode = prev;
+	    prev= curr;
+	    curr=next;
+	}
+	*head = prev;
+    return prev;
 }
 
 void printList(list *head)
@@ -62,6 +83,9 @@ int main()
 {
 	list* l = populate(1,10,1);
 	printList(l);
+	printList(reverse(&l));
+	printList(l);
+	delete l;
 	
 return 0;
 }

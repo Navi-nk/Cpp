@@ -15,8 +15,10 @@ out: $(OBJDIR)/$(file).o
 	$(CC) -o $@ $^ 
 
 $(OBJDIR)/$(file).o: $(file).cpp
-	$(CC) $(CFLAGS) -o $@ -c $<
+	$(CC) $(CPPFLAGS) -o $@ -c $<
 
 clean:
 	rm -f out $(OBJDIR)/$(file).o
 
+cleanall:
+	rm -f out $(OBJDIR)/*.o
